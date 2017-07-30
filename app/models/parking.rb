@@ -21,7 +21,6 @@ class Parking < ApplicationRecord
   end
 
   def setup_amount
-     byebug
      puts "----"
      puts self.parking_type
      puts "----"
@@ -53,7 +52,11 @@ class Parking < ApplicationRecord
     end
 
     def calculate_long_term_amount
-      # TODO
+      if duration <= 60 * 6
+        self.amount = 1200
+      else duration > 60 * 6 && duration <= 60*24
+        self.amount = 1600
+      end
     end
 
 end
